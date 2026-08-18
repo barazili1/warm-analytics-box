@@ -4,7 +4,7 @@ export function Overlay({
   children,
 }: {
   open: boolean;
-  onClose?: () => void;
+  onClose?: (() => void) | undefined;
   children: React.ReactNode;
 }) {
   if (!open) return null;
