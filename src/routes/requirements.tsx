@@ -7,7 +7,7 @@ import { LoadingDialog } from "@/components/LoadingDialog";
 
 export const Route = createFileRoute("/requirements")({
   validateSearch: (search: Record<string, unknown>) => ({
-    platform: typeof search.platform === "string" ? search.platform : "1xBet",
+    platform: typeof search["platform"] === "string" ? (search["platform"] as string) : "1xBet",
   }),
   head: () => ({
     meta: [

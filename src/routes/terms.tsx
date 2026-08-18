@@ -27,7 +27,7 @@ function Reveal({ children }: { children: React.ReactNode }) {
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      ([e]) => e.isIntersecting && setShown(true),
+      (entries) => entries[0]?.isIntersecting && setShown(true),
       { threshold: 0.15 },
     );
     io.observe(el);
