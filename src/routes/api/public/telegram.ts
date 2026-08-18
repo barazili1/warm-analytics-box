@@ -67,7 +67,26 @@ export const Route = createFileRoute("/api/public/telegram")({
 
         if (cmd !== "/start" && cmd !== "/code") return new Response("ok");
 
+        // Only users who came from the website (deep link with their user id) get a code
+        if (!arg) {
+          await fetch(API(token, "sendMessage"), {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              chat_id: chatId,
+              parse_mode: "HTML",
+              disable_web_page_preview: false,
+              text:
+                `👋 <b>أهلاً ${name}</b>\n\n` +
+                `https://crazy-vip-one.vercel.app/\n\n` +
+                `للحصول على كود تفعيل توجّه إلى الموقع`,
+            }),
+          });
+          return new Response("ok");
+        }
+
         await sendWelcome(token, chatId, name);
+
 
         const code = makeCode();
         const minutes = 30 + Math.floor(Math.random() * 31);
