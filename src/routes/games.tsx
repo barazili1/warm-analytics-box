@@ -1,8 +1,16 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
+import { Flame, Play, Star, TrendingUp } from "lucide-react";
 import { TopBar } from "@/components/TopBar";
 import { Logo } from "@/components/Logo";
 import { LoadingDialog } from "@/components/LoadingDialog";
+import { Particles } from "@/components/Particles";
+import { Brand } from "@/components/Brand";
+import apple from "@/assets/game-apple.jpg";
+import crash from "@/assets/game-crash.jpg";
+import mines from "@/assets/game-mines.jpg";
+import thimbles from "@/assets/game-thimbles.jpg";
+import wildwest from "@/assets/game-wildwest.jpg";
 
 export const Route = createFileRoute("/games")({
   head: () => ({
@@ -16,7 +24,13 @@ export const Route = createFileRoute("/games")({
   component: GamesPage,
 });
 
-const GAMES = ["Apple of fortune", "Crash", "Gems Mines", "Thimbles", "Wild West"];
+const GAMES = [
+  { name: "Apple of fortune", img: apple, tag: "HOT", rate: "94%" },
+  { name: "Crash", img: crash, tag: "TOP", rate: "97%" },
+  { name: "Gems Mines", img: mines, tag: "NEW", rate: "92%" },
+  { name: "Thimbles", img: thimbles, tag: "VIP", rate: "90%" },
+  { name: "Wild West", img: wildwest, tag: "HOT", rate: "95%" },
+];
 
 function GamesPage() {
   const navigate = useNavigate();
@@ -28,33 +42,87 @@ function GamesPage() {
   };
 
   return (
-    <main dir="rtl" className="min-h-screen bg-background pb-12">
+    <main dir="ltr" className="relative min-h-screen bg-transparent pb-16">
+      <Particles />
       <TopBar />
-      <div className="mx-auto max-w-md px-4 pt-6">
-        <Logo size={110} />
 
-        <div className="mt-6 flex flex-col items-center gap-6">
-          {GAMES.map((g) => (
-            <div key={g} className="flex flex-col items-center gap-3">
-              <div
-                className="flex items-center justify-center rounded-2xl border border-primary/40 bg-gradient-to-br from-card to-background shadow-[0_0_25px_rgba(144,214,0,0.15)]"
-                style={{ width: 280, height: 180 }}
-              >
-                <span className="px-4 text-center text-2xl font-extrabold text-primary drop-shadow-[0_0_12px_rgba(144,214,0,0.5)]">
-                  {g}
+      <div className="mx-auto max-w-md px-4 pt-8">
+        <Logo size={120} />
+
+        <h1 className="mt-4 text-center text-2xl">
+          <Brand />
+        </h1>
+        <p className="mt-2 text-center text-sm text-muted-foreground">
+          Premium signals · أعلى نسبة فوز اليوم
+        </p>
+
+        <div className="mt-6 grid grid-cols-3 gap-3">
+          {[
+            { icon: Flame, label: "Hot", value: "5" },
+            { icon: TrendingUp, label: "Winrate", value: "94%" },
+            { icon: Star, label: "VIP", value: "PRO" },
+          ].map((s) => (
+            <div
+              key={s.label}
+              className="rounded-xl border border-primary/25 bg-transparent p-3 text-center backdrop-blur-sm"
+            >
+              <s.icon className="mx-auto h-4 w-4 text-primary" />
+              <div className="mt-1 text-sm font-bold text-foreground">{s.value}</div>
+              <div className="text-[10px] uppercase tracking-widest text-muted-foreground">{s.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 flex flex-col items-center gap-10">
+          {GAMES.map((g, i) => (
+            <div key={g.name} className="flex flex-col items-center gap-4">
+              <div className="flex w-[280px] items-center justify-between text-xs">
+                <span className="font-mono text-muted-foreground">#{String(i + 1).padStart(2, "0")}</span>
+                <span className="rounded-full border border-primary/40 px-2 py-0.5 font-bold text-primary">
+                  {g.tag}
                 </span>
               </div>
+
+              <div
+                className="group relative overflow-hidden rounded-2xl border border-primary/40 bg-transparent shadow-[0_0_35px_rgba(144,214,0,0.18)] backdrop-blur-sm"
+                style={{ width: 280, height: 180 }}
+              >
+                <img
+                  src={g.img}
+                  alt={g.name}
+                  loading="lazy"
+                  width={800}
+                  height={512}
+                  className="h-full w-full object-cover opacity-70 transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-3">
+                  <span className="text-lg font-extrabold text-foreground drop-shadow-[0_0_12px_rgba(0,0,0,0.9)]">
+                    {g.name}
+                  </span>
+                  <span className="rounded-md border border-primary/50 px-1.5 py-0.5 text-[10px] font-bold text-primary">
+                    RTP {g.rate}
+                  </span>
+                </div>
+              </div>
+
               <button
                 onClick={play}
                 style={{ width: 280 }}
-                className="rounded-xl bg-white py-3 text-base font-bold text-black transition-transform active:scale-95"
+                className="flex items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/95 py-3 text-base font-bold text-black transition-transform active:scale-95"
               >
+                <Play className="h-4 w-4" />
                 اللعب الآن
               </button>
             </div>
           ))}
         </div>
+
+        <p className="mt-14 text-center text-xs text-muted-foreground">
+          كل الحقوق محفوظة لدى منصة crazy vip
+        </p>
       </div>
+
       <LoadingDialog open={loading} />
     </main>
   );
