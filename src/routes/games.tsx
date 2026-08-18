@@ -24,20 +24,37 @@ export const Route = createFileRoute("/games")({
 });
 
 const GAMES = [
-  { name: "Apple of fortune", img: apple, tag: "HOT", rate: "94%" },
-  { name: "Crash", img: crash, tag: "TOP", rate: "97%" },
-  { name: "Gems Mines", img: mines, tag: "NEW", rate: "92%" },
-  { name: "Thimbles", img: thimbles, tag: "VIP", rate: "90%" },
-  { name: "Wild West", img: wildwest, tag: "HOT", rate: "95%" },
+  { name: "Apple of fortune", img: apple, tag: "HOT", rate: "94%", to: "/game/apple" },
+  { name: "Crash", img: crash, tag: "TOP", rate: "97%", to: "/game/apple" },
+  { name: "Gems Mines", img: mines, tag: "NEW", rate: "92%", to: "/game/mines" },
+  { name: "Thimbles", img: thimbles, tag: "VIP", rate: "90%", to: "/game/mines" },
+  { name: "Wild West", img: wildwest, tag: "HOT", rate: "95%", to: "/game/apple" },
 ];
 
 function GamesPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [choice, setChoice] = useState<string | null>(null);
+  const [codeOpen, setCodeOpen] = useState(false);
 
-  const play = () => {
+  const play = (to: string) => setChoice(to);
+
+  const onGet = () => {
+    setChoice(null);
     setLoading(true);
     setTimeout(() => navigate({ to: "/terms" }), 3000);
+  };
+
+  const onUse = () => {
+    setCodeOpen(true);
+  };
+
+  const onVerified = () => {
+    const to = choice ?? "/game/apple";
+    setCodeOpen(false);
+    setChoice(null);
+    setLoading(true);
+    setTimeout(() => navigate({ to }), 3000);
   };
 
   return (
