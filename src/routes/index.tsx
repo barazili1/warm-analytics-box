@@ -1,6 +1,8 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Logo } from "@/components/Logo";
+import { Particles } from "@/components/Particles";
+import { Brand } from "@/components/Brand";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,19 +31,20 @@ function Splash() {
   }, [navigate]);
 
   return (
-    <main dir="rtl" className="flex min-h-screen flex-col items-center justify-center gap-8 bg-background px-8">
+    <main dir="ltr" className="relative flex min-h-screen flex-col items-center justify-center gap-8 bg-transparent px-8">
+      <Particles />
       <div className="relative flex h-52 w-52 items-center justify-center">
-        <span className="absolute inset-0 animate-ping rounded-full bg-primary/20" />
+        <span className="absolute inset-0 animate-ping rounded-full bg-primary/15" />
         <span className="absolute inset-2 rounded-full border-2 border-primary/60 shadow-[0_0_60px_rgba(144,214,0,0.45)]" />
         <span className="absolute inset-0 animate-spin rounded-full border-t-4 border-primary [animation-duration:2.5s]" />
         <Logo size={130} />
       </div>
 
-      <h1 className="text-4xl font-extrabold tracking-[0.2em] text-primary drop-shadow-[0_0_18px_rgba(144,214,0,0.6)]">
-        CRAZY VIP
+      <h1 className="text-4xl tracking-[0.2em]">
+        <Brand />
       </h1>
 
-      <div className="h-2.5 w-64 overflow-hidden rounded-full border border-primary/40 bg-card">
+      <div className="h-2.5 w-64 overflow-hidden rounded-full border border-primary/40 bg-transparent backdrop-blur-sm">
         <div
           className="h-full rounded-full bg-primary shadow-[0_0_14px_rgba(144,214,0,0.8)] transition-[width] duration-100"
           style={{ width: `${pct}%` }}
