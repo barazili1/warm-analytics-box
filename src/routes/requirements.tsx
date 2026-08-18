@@ -413,6 +413,7 @@ function RequirementsPage() {
       </div>
 
       <LoadingDialog open={loading} />
+      <VerifySequenceDialog open={seqOpen} onClose={() => setSeqOpen(false)} />
     </main>
   );
 }
