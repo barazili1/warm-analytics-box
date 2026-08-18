@@ -34,7 +34,7 @@ function Splash() {
   return (
     <main
       dir="ltr"
-      className="relative z-10 flex min-h-screen flex-col items-center justify-center gap-10 bg-transparent px-8"
+      className="relative z-10 flex min-h-screen flex-col items-center justify-center gap-7 bg-transparent px-8"
     >
       {/* logo orb */}
       <div className="relative flex h-44 w-44 items-center justify-center">
@@ -69,12 +69,12 @@ function Splash() {
             style={{ filter: "drop-shadow(0 0 6px rgba(144,214,0,0.9))" }}
           />
         </svg>
-        <Logo size={132} className="relative animate-pulse [animation-duration:3s]" />
+        <Logo size={100} className="relative animate-pulse [animation-duration:3s]" />
       </div>
 
       {/* brand */}
       <div className="text-center">
-        <h1 className="text-5xl tracking-[0.18em]">
+        <h1 className="text-4xl tracking-[0.18em]">
           <Brand />
         </h1>
         <div className="mx-auto mt-3 flex items-center justify-center gap-3">
@@ -87,7 +87,7 @@ function Splash() {
       </div>
 
       {/* progress */}
-      <div className="w-72">
+      <div className="w-60">
         <div className="mb-2 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground">
           <span>{status}</span>
           <span className="tabular-nums text-primary">{Math.round(pct)}%</span>

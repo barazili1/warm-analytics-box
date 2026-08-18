@@ -96,6 +96,7 @@ function TermsPage() {
 
   const submit = () => {
     if (!ready || !platform) return;
+    saveUserId(userId.trim());
     setLoading(true);
     setTimeout(() => navigate({ to: "/requirements", search: { platform } }), 3000);
   };
