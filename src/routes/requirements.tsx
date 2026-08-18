@@ -16,6 +16,7 @@ import { TopBar } from "@/components/TopBar";
 import { Logo } from "@/components/Logo";
 import { LoadingDialog } from "@/components/LoadingDialog";
 import { Brand } from "@/components/Brand";
+import { VerifySequenceDialog } from "@/components/VerifySequenceDialog";
 import imgDownload from "@/assets/step-download.jpg";
 import imgTelegram from "@/assets/step-telegram.jpg";
 import imgPromo from "@/assets/step-promo.jpg";
@@ -216,6 +217,7 @@ function RequirementsPage() {
   const { platform } = Route.useSearch();
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [seqOpen, setSeqOpen] = useState(false);
   const [done, setDone] = useState<Record<string, boolean>>({});
   const [shots, setShots] = useState(0);
 
@@ -238,7 +240,10 @@ function RequirementsPage() {
 
   const verify = () => {
     setLoading(true);
-    setTimeout(() => setLoading(false), 3000);
+    setTimeout(() => {
+      setLoading(false);
+      setSeqOpen(true);
+    }, 3000);
   };
 
   return (
@@ -408,6 +413,7 @@ function RequirementsPage() {
       </div>
 
       <LoadingDialog open={loading} />
+      <VerifySequenceDialog open={seqOpen} onClose={() => setSeqOpen(false)} />
     </main>
   );
 }

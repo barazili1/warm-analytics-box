@@ -5,6 +5,7 @@ import { TopBar } from "@/components/TopBar";
 import { Logo } from "@/components/Logo";
 import { LoadingDialog } from "@/components/LoadingDialog";
 import { Brand } from "@/components/Brand";
+import { ChoiceDialog, CodeDialog } from "@/components/ActivationDialogs";
 import apple from "@/assets/game-apple.jpg";
 import crash from "@/assets/game-crash.jpg";
 import mines from "@/assets/game-mines.jpg";
@@ -24,20 +25,37 @@ export const Route = createFileRoute("/games")({
 });
 
 const GAMES = [
-  { name: "Apple of fortune", img: apple, tag: "HOT", rate: "94%" },
-  { name: "Crash", img: crash, tag: "TOP", rate: "97%" },
-  { name: "Gems Mines", img: mines, tag: "NEW", rate: "92%" },
-  { name: "Thimbles", img: thimbles, tag: "VIP", rate: "90%" },
-  { name: "Wild West", img: wildwest, tag: "HOT", rate: "95%" },
+  { name: "Apple of fortune", img: apple, tag: "HOT", rate: "94%", to: "/game/apple" },
+  { name: "Crash", img: crash, tag: "TOP", rate: "97%", to: "/game/apple" },
+  { name: "Gems Mines", img: mines, tag: "NEW", rate: "92%", to: "/game/mines" },
+  { name: "Thimbles", img: thimbles, tag: "VIP", rate: "90%", to: "/game/mines" },
+  { name: "Wild West", img: wildwest, tag: "HOT", rate: "95%", to: "/game/apple" },
 ];
 
 function GamesPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [choice, setChoice] = useState<string | null>(null);
+  const [codeOpen, setCodeOpen] = useState(false);
 
-  const play = () => {
+  const play = (to: string) => setChoice(to);
+
+  const onGet = () => {
+    setChoice(null);
     setLoading(true);
     setTimeout(() => navigate({ to: "/terms" }), 3000);
+  };
+
+  const onUse = () => {
+    setCodeOpen(true);
+  };
+
+  const onVerified = () => {
+    const to = choice ?? "/game/apple";
+    setCodeOpen(false);
+    setChoice(null);
+    setLoading(true);
+    setTimeout(() => navigate({ to }), 3000);
   };
 
   return (
@@ -105,7 +123,7 @@ function GamesPage() {
               </div>
 
               <button
-                onClick={play}
+                onClick={() => play(g.to)}
                 style={{ width: 280 }}
                 className="flex items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/95 py-3 text-base font-bold text-black transition-transform active:scale-95"
               >
@@ -120,6 +138,14 @@ function GamesPage() {
           كل الحقوق محفوظة لدى منصة crazy vip
         </p>
       </div>
+
+      <ChoiceDialog
+        open={choice !== null && !codeOpen}
+        onClose={() => setChoice(null)}
+        onUse={onUse}
+        onGet={onGet}
+      />
+      <CodeDialog open={codeOpen} onClose={() => setCodeOpen(false)} onVerified={onVerified} />
 
       <LoadingDialog open={loading} />
     </main>

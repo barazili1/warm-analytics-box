@@ -5,6 +5,7 @@ import { TopBar } from "@/components/TopBar";
 import { Logo } from "@/components/Logo";
 import { LoadingDialog } from "@/components/LoadingDialog";
 import { Brand } from "@/components/Brand";
+import { saveUserId } from "@/lib/session";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
@@ -96,6 +97,7 @@ function TermsPage() {
 
   const submit = () => {
     if (!ready || !platform) return;
+    saveUserId(userId.trim());
     setLoading(true);
     setTimeout(() => navigate({ to: "/requirements", search: { platform } }), 3000);
   };
