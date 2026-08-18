@@ -14,7 +14,7 @@ export function TopBar() {
   return (
     <header className="sticky top-0 z-40 border-b border-primary/30 bg-card/80 backdrop-blur-md">
       <div className="mx-auto flex h-14 max-w-md items-center justify-between px-4">
-        <span className="text-lg font-extrabold tracking-wide text-primary drop-shadow-[0_0_10px_hsl(var(--glow))]">
+        <span className="text-lg font-extrabold tracking-wide text-primary drop-shadow-[0_0_10px_rgba(144,214,0,0.6)]">
           CRAZY VIP
         </span>
         <span className="flex items-center gap-1.5 text-xs font-semibold text-foreground/80">
