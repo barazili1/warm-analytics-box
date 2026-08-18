@@ -32,7 +32,7 @@ export function Particles() {
         y: Math.random() * h,
         vx: (Math.random() - 0.5) * 0.35,
         vy: (Math.random() - 0.5) * 0.35,
-        r: Math.random() * 1.8 + 0.7,
+        r: Math.random() * 2.2 + 1.1,
       });
     }
 
@@ -52,8 +52,8 @@ export function Particles() {
           const dy = p.y - q.y;
           const d2 = dx * dx + dy * dy;
           if (d2 < 110 * 110) {
-            ctx.strokeStyle = `rgba(144,214,0,${0.16 * (1 - Math.sqrt(d2) / 110)})`;
-            ctx.lineWidth = 0.7;
+            ctx.strokeStyle = `rgba(144,214,0,${0.35 * (1 - Math.sqrt(d2) / 110)})`;
+            ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);
@@ -61,9 +61,9 @@ export function Particles() {
           }
         }
 
-        ctx.fillStyle = "rgba(144,214,0,0.75)";
+        ctx.fillStyle = "rgba(170,255,40,0.95)";
         ctx.shadowColor = "rgba(144,214,0,0.9)";
-        ctx.shadowBlur = 8;
+        ctx.shadowBlur = 12;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();
