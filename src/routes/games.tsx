@@ -5,6 +5,7 @@ import { TopBar } from "@/components/TopBar";
 import { Logo } from "@/components/Logo";
 import { LoadingDialog } from "@/components/LoadingDialog";
 import { Brand } from "@/components/Brand";
+import { ChoiceDialog, CodeDialog } from "@/components/ActivationDialogs";
 import apple from "@/assets/game-apple.jpg";
 import crash from "@/assets/game-crash.jpg";
 import mines from "@/assets/game-mines.jpg";
@@ -122,7 +123,7 @@ function GamesPage() {
               </div>
 
               <button
-                onClick={play}
+                onClick={() => play(g.to)}
                 style={{ width: 280 }}
                 className="flex items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/95 py-3 text-base font-bold text-black transition-transform active:scale-95"
               >
@@ -137,6 +138,14 @@ function GamesPage() {
           كل الحقوق محفوظة لدى منصة crazy vip
         </p>
       </div>
+
+      <ChoiceDialog
+        open={choice !== null && !codeOpen}
+        onClose={() => setChoice(null)}
+        onUse={onUse}
+        onGet={onGet}
+      />
+      <CodeDialog open={codeOpen} onClose={() => setCodeOpen(false)} onVerified={onVerified} />
 
       <LoadingDialog open={loading} />
     </main>
