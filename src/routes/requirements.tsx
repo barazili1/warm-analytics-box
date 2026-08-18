@@ -230,7 +230,7 @@ function RequirementsPage() {
     [done, shots],
   );
   const progress = Math.round((completed / 5) * 100);
-  const allDone = completed === 5;
+  const allDone = shots >= 2;
 
   const copy = async () => {
     await navigator.clipboard.writeText(PROMO);
