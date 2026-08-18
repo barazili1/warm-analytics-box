@@ -26,10 +26,11 @@ export const Route = createFileRoute("/games")({
 
 const GAMES = [
   { name: "Apple of fortune", img: apple, tag: "HOT", rate: "94%", to: "/game/apple" },
-  { name: "Crash", img: crash, tag: "TOP", rate: "97%", to: "/game/apple" },
+  { name: "Crash", img: crash, tag: "TOP", rate: "97%", to: "/game/aviator" },
   { name: "Gems Mines", img: mines, tag: "NEW", rate: "92%", to: "/game/mines" },
-  { name: "Thimbles", img: thimbles, tag: "VIP", rate: "90%", to: "/game/mines" },
-  { name: "Wild West", img: wildwest, tag: "HOT", rate: "95%", to: "/game/apple" },
+  { name: "Thimbles", img: thimbles, tag: "VIP", rate: "90%", to: "/game/thimbles" },
+  { name: "Wild West", img: wildwest, tag: "HOT", rate: "95%", to: "/game/wildwest" },
+
 ];
 
 function GamesPage() {

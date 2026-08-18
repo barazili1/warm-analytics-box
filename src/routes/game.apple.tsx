@@ -47,6 +47,9 @@ function AppleGame() {
             const bad = rows?.[rowIndex];
             return (
               <div key={odd} className="flex items-center justify-center gap-2">
+                <span className="mr-1 w-14 rounded-md border border-primary/35 py-1 text-center text-[11px] font-black text-primary">
+                  {odd}
+                </span>
                 {Array.from({ length: 5 }).map((_, c) => {
                   const src = rows == null ? CLOSED : c === bad ? BAD : GOOD;
                   return (
@@ -59,10 +62,8 @@ function AppleGame() {
                     </span>
                   );
                 })}
-                <span className="ml-1 w-14 rounded-md border border-primary/35 py-1 text-center text-[11px] font-black text-primary">
-                  {odd}
-                </span>
               </div>
+
             );
           })}
         </div>
