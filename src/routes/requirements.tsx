@@ -396,7 +396,7 @@ function RequirementsPage() {
         <div className="mx-auto max-w-md">
           <button
             onClick={verify}
-            disabled={!allDone}
+            
             className={`flex w-full items-center justify-center gap-2 rounded-full py-3.5 font-extrabold transition active:scale-[0.97] ${
               allDone
                 ? "border border-white/70 bg-white/95 text-black"
