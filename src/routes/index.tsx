@@ -1,7 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Logo } from "@/components/Logo";
-import { Particles } from "@/components/Particles";
 import { Brand } from "@/components/Brand";
 
 export const Route = createFileRoute("/")({
@@ -30,25 +29,84 @@ function Splash() {
     };
   }, [navigate]);
 
+  const status = pct < 35 ? "initializing" : pct < 75 ? "loading assets" : "almost ready";
+
   return (
-    <main dir="ltr" className="relative flex min-h-screen flex-col items-center justify-center gap-8 bg-transparent px-8">
-      <Particles />
-      <div className="relative flex h-52 w-52 items-center justify-center">
-        <span className="absolute inset-0 animate-ping rounded-full bg-primary/15" />
-        <span className="absolute inset-2 rounded-full border-2 border-primary/60 shadow-[0_0_60px_rgba(144,214,0,0.45)]" />
-        <span className="absolute inset-0 animate-spin rounded-full border-t-4 border-primary [animation-duration:2.5s]" />
-        <Logo size={130} />
+    <main
+      dir="ltr"
+      className="relative z-10 flex min-h-screen flex-col items-center justify-center gap-10 bg-transparent px-8"
+    >
+      {/* logo orb */}
+      <div className="relative flex h-60 w-60 items-center justify-center">
+        <span className="absolute inset-0 animate-ping rounded-full bg-primary/10 [animation-duration:2.6s]" />
+        <span className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(144,214,0,0.22),transparent_65%)]" />
+        <span className="absolute inset-1 rounded-full border border-primary/25" />
+        <span className="absolute inset-5 rounded-full border-2 border-primary/50 shadow-[0_0_70px_rgba(144,214,0,0.4)]" />
+        <svg className="absolute inset-0 h-full w-full animate-spin [animation-duration:6s]" viewBox="0 0 100 100">
+          <circle
+            cx="50"
+            cy="50"
+            r="48"
+            fill="none"
+            stroke="currentColor"
+            className="text-primary/70"
+            strokeWidth="1.5"
+            strokeDasharray="2 12"
+            strokeLinecap="round"
+          />
+        </svg>
+        <svg className="absolute inset-0 h-full w-full animate-spin [animation-duration:3s]" viewBox="0 0 100 100">
+          <circle
+            cx="50"
+            cy="50"
+            r="44"
+            fill="none"
+            stroke="currentColor"
+            className="text-primary"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeDasharray="30 246"
+            style={{ filter: "drop-shadow(0 0 6px rgba(144,214,0,0.9))" }}
+          />
+        </svg>
+        <Logo size={132} className="relative animate-pulse [animation-duration:3s]" />
       </div>
 
-      <h1 className="text-4xl tracking-[0.2em]">
-        <Brand />
-      </h1>
+      {/* brand */}
+      <div className="text-center">
+        <h1 className="text-5xl tracking-[0.18em]">
+          <Brand />
+        </h1>
+        <div className="mx-auto mt-3 flex items-center justify-center gap-3">
+          <span className="h-px w-10 bg-gradient-to-r from-transparent to-primary/60" />
+          <span className="text-[10px] font-bold uppercase tracking-[0.45em] text-muted-foreground">
+            premium
+          </span>
+          <span className="h-px w-10 bg-gradient-to-l from-transparent to-primary/60" />
+        </div>
+      </div>
 
-      <div className="h-2.5 w-64 overflow-hidden rounded-full border border-primary/40 bg-transparent backdrop-blur-sm">
-        <div
-          className="h-full rounded-full bg-primary shadow-[0_0_14px_rgba(144,214,0,0.8)] transition-[width] duration-100"
-          style={{ width: `${pct}%` }}
-        />
+      {/* progress */}
+      <div className="w-72">
+        <div className="mb-2 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground">
+          <span>{status}</span>
+          <span className="tabular-nums text-primary">{Math.round(pct)}%</span>
+        </div>
+        <div className="relative h-2 w-full overflow-hidden rounded-full border border-primary/30 bg-transparent">
+          <div
+            className="h-full rounded-full bg-primary shadow-[0_0_16px_rgba(144,214,0,0.85)] transition-[width] duration-100"
+            style={{ width: `${pct}%` }}
+          />
+        </div>
+        <div className="mt-6 flex justify-center gap-1.5">
+          {[0, 1, 2].map((i) => (
+            <span
+              key={i}
+              className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary"
+              style={{ animationDelay: `${i * 200}ms` }}
+            />
+          ))}
+        </div>
       </div>
     </main>
   );

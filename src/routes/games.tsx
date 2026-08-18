@@ -4,7 +4,6 @@ import { Flame, Play, Star, TrendingUp } from "lucide-react";
 import { TopBar } from "@/components/TopBar";
 import { Logo } from "@/components/Logo";
 import { LoadingDialog } from "@/components/LoadingDialog";
-import { Particles } from "@/components/Particles";
 import { Brand } from "@/components/Brand";
 import apple from "@/assets/game-apple.jpg";
 import crash from "@/assets/game-crash.jpg";
@@ -42,8 +41,7 @@ function GamesPage() {
   };
 
   return (
-    <main dir="ltr" className="relative min-h-screen bg-transparent pb-16">
-      <Particles />
+    <main dir="ltr" className="relative z-10 min-h-screen bg-transparent pb-16">
       <TopBar />
 
       <div className="mx-auto max-w-md px-4 pt-8">
