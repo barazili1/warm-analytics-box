@@ -85,7 +85,7 @@ export function Particles() {
     <div className="pointer-events-none fixed inset-0 z-0">
       <div className="absolute inset-0 bg-background" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(144,214,0,0.16),transparent_60%)]" />
-      <canvas ref={ref} className="h-full w-full" />
+      <canvas ref={ref} className="absolute inset-0 h-full w-full" />
     </div>
   );
 }
