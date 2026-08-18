@@ -82,7 +82,7 @@ function TermsPage() {
   const progress = (userId.trim() ? 50 : 0) + (platform ? 50 : 0);
 
   const submit = () => {
-    if (!ready) return;
+    if (!ready || !platform) return;
     setLoading(true);
     setTimeout(() => navigate({ to: "/requirements", search: { platform } }), 3000);
   };
