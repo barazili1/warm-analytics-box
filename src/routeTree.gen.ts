@@ -14,7 +14,10 @@ import { Route as GamesRouteImport } from './routes/games'
 import { Route as RequirementsRouteImport } from './routes/requirements'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as GameAppleRouteImport } from './routes/game.apple'
+import { Route as GameAviatorRouteImport } from './routes/game.aviator'
 import { Route as GameMinesRouteImport } from './routes/game.mines'
+import { Route as GameThimblesRouteImport } from './routes/game.thimbles'
+import { Route as GameWildwestRouteImport } from './routes/game.wildwest'
 import { Route as ApiPublicTelegramRouteImport } from './routes/api/public/telegram'
 
 const IndexRoute = IndexRouteImport.update({
@@ -42,9 +45,24 @@ const GameAppleRoute = GameAppleRouteImport.update({
   path: '/game/apple',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GameAviatorRoute = GameAviatorRouteImport.update({
+  id: '/game/aviator',
+  path: '/game/aviator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GameMinesRoute = GameMinesRouteImport.update({
   id: '/game/mines',
   path: '/game/mines',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GameThimblesRoute = GameThimblesRouteImport.update({
+  id: '/game/thimbles',
+  path: '/game/thimbles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GameWildwestRoute = GameWildwestRouteImport.update({
+  id: '/game/wildwest',
+  path: '/game/wildwest',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicTelegramRoute = ApiPublicTelegramRouteImport.update({
@@ -59,7 +77,10 @@ export interface FileRoutesByFullPath {
   '/requirements': typeof RequirementsRoute
   '/terms': typeof TermsRoute
   '/game/apple': typeof GameAppleRoute
+  '/game/aviator': typeof GameAviatorRoute
   '/game/mines': typeof GameMinesRoute
+  '/game/thimbles': typeof GameThimblesRoute
+  '/game/wildwest': typeof GameWildwestRoute
   '/api/public/telegram': typeof ApiPublicTelegramRoute
 }
 export interface FileRoutesByTo {
@@ -68,7 +89,10 @@ export interface FileRoutesByTo {
   '/requirements': typeof RequirementsRoute
   '/terms': typeof TermsRoute
   '/game/apple': typeof GameAppleRoute
+  '/game/aviator': typeof GameAviatorRoute
   '/game/mines': typeof GameMinesRoute
+  '/game/thimbles': typeof GameThimblesRoute
+  '/game/wildwest': typeof GameWildwestRoute
   '/api/public/telegram': typeof ApiPublicTelegramRoute
 }
 export interface FileRoutesById {
@@ -78,7 +102,10 @@ export interface FileRoutesById {
   '/requirements': typeof RequirementsRoute
   '/terms': typeof TermsRoute
   '/game/apple': typeof GameAppleRoute
+  '/game/aviator': typeof GameAviatorRoute
   '/game/mines': typeof GameMinesRoute
+  '/game/thimbles': typeof GameThimblesRoute
+  '/game/wildwest': typeof GameWildwestRoute
   '/api/public/telegram': typeof ApiPublicTelegramRoute
 }
 export interface FileRouteTypes {
@@ -89,7 +116,10 @@ export interface FileRouteTypes {
     | '/requirements'
     | '/terms'
     | '/game/apple'
+    | '/game/aviator'
     | '/game/mines'
+    | '/game/thimbles'
+    | '/game/wildwest'
     | '/api/public/telegram'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -98,7 +128,10 @@ export interface FileRouteTypes {
     | '/requirements'
     | '/terms'
     | '/game/apple'
+    | '/game/aviator'
     | '/game/mines'
+    | '/game/thimbles'
+    | '/game/wildwest'
     | '/api/public/telegram'
   id:
     | '__root__'
@@ -107,7 +140,10 @@ export interface FileRouteTypes {
     | '/requirements'
     | '/terms'
     | '/game/apple'
+    | '/game/aviator'
     | '/game/mines'
+    | '/game/thimbles'
+    | '/game/wildwest'
     | '/api/public/telegram'
   fileRoutesById: FileRoutesById
 }
@@ -117,7 +153,10 @@ export interface RootRouteChildren {
   RequirementsRoute: typeof RequirementsRoute
   TermsRoute: typeof TermsRoute
   GameAppleRoute: typeof GameAppleRoute
+  GameAviatorRoute: typeof GameAviatorRoute
   GameMinesRoute: typeof GameMinesRoute
+  GameThimblesRoute: typeof GameThimblesRoute
+  GameWildwestRoute: typeof GameWildwestRoute
   ApiPublicTelegramRoute: typeof ApiPublicTelegramRoute
 }
 
@@ -158,11 +197,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GameAppleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/game/aviator': {
+      id: '/game/aviator'
+      path: '/game/aviator'
+      fullPath: '/game/aviator'
+      preLoaderRoute: typeof GameAviatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/game/mines': {
       id: '/game/mines'
       path: '/game/mines'
       fullPath: '/game/mines'
       preLoaderRoute: typeof GameMinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/game/thimbles': {
+      id: '/game/thimbles'
+      path: '/game/thimbles'
+      fullPath: '/game/thimbles'
+      preLoaderRoute: typeof GameThimblesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/game/wildwest': {
+      id: '/game/wildwest'
+      path: '/game/wildwest'
+      fullPath: '/game/wildwest'
+      preLoaderRoute: typeof GameWildwestRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/telegram': {
@@ -181,7 +241,10 @@ const rootRouteChildren: RootRouteChildren = {
   RequirementsRoute: RequirementsRoute,
   TermsRoute: TermsRoute,
   GameAppleRoute: GameAppleRoute,
+  GameAviatorRoute: GameAviatorRoute,
   GameMinesRoute: GameMinesRoute,
+  GameThimblesRoute: GameThimblesRoute,
+  GameWildwestRoute: GameWildwestRoute,
   ApiPublicTelegramRoute: ApiPublicTelegramRoute,
 }
 export const routeTree = rootRouteImport
