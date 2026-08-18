@@ -26,7 +26,7 @@ export function Particles() {
     };
 
     resize();
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 80; i++) {
       parts.push({
         x: Math.random() * w,
         y: Math.random() * h,

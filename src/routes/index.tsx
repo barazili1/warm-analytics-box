@@ -37,7 +37,7 @@ function Splash() {
       className="relative z-10 flex min-h-screen flex-col items-center justify-center gap-10 bg-transparent px-8"
     >
       {/* logo orb */}
-      <div className="relative flex h-60 w-60 items-center justify-center">
+      <div className="relative flex h-44 w-44 items-center justify-center">
         <span className="absolute inset-0 animate-ping rounded-full bg-primary/10 [animation-duration:2.6s]" />
         <span className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(144,214,0,0.22),transparent_65%)]" />
         <span className="absolute inset-1 rounded-full border border-primary/25" />
