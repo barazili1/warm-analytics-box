@@ -1,7 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Logo } from "@/components/Logo";
-import { Particles } from "@/components/Particles";
 import { Brand } from "@/components/Brand";
 
 export const Route = createFileRoute("/")({
@@ -31,8 +30,7 @@ function Splash() {
   }, [navigate]);
 
   return (
-    <main dir="ltr" className="relative flex min-h-screen flex-col items-center justify-center gap-8 bg-transparent px-8">
-      <Particles />
+    <main dir="ltr" className="relative z-10 flex min-h-screen flex-col items-center justify-center gap-8 bg-transparent px-8">
       <div className="relative flex h-52 w-52 items-center justify-center">
         <span className="absolute inset-0 animate-ping rounded-full bg-primary/15" />
         <span className="absolute inset-2 rounded-full border-2 border-primary/60 shadow-[0_0_60px_rgba(144,214,0,0.45)]" />

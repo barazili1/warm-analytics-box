@@ -4,7 +4,6 @@ import { Copy, Check, ImagePlus, ShieldCheck } from "lucide-react";
 import { TopBar } from "@/components/TopBar";
 import { Logo } from "@/components/Logo";
 import { LoadingDialog } from "@/components/LoadingDialog";
-import { Particles } from "@/components/Particles";
 import { Brand } from "@/components/Brand";
 import imgDownload from "@/assets/step-download.jpg";
 import imgTelegram from "@/assets/step-telegram.jpg";
@@ -113,8 +112,7 @@ function RequirementsPage() {
   };
 
   return (
-    <main dir="ltr" className="relative min-h-screen bg-transparent pb-14">
-      <Particles />
+    <main dir="ltr" className="relative z-10 min-h-screen bg-transparent pb-14">
       <TopBar />
 
       <div className="mx-auto max-w-md space-y-6 px-4 pt-8">

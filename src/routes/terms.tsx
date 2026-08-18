@@ -4,7 +4,6 @@ import { Check, Hash, Headphones, Play, Send, Sparkles, Youtube } from "lucide-r
 import { TopBar } from "@/components/TopBar";
 import { Logo } from "@/components/Logo";
 import { LoadingDialog } from "@/components/LoadingDialog";
-import { Particles } from "@/components/Particles";
 import { Brand } from "@/components/Brand";
 
 export const Route = createFileRoute("/terms")({
@@ -88,8 +87,7 @@ function TermsPage() {
   };
 
   return (
-    <main dir="ltr" className="relative min-h-screen bg-transparent pb-14">
-      <Particles />
+    <main dir="ltr" className="relative z-10 min-h-screen bg-transparent pb-14">
       <TopBar />
 
       <div className="mx-auto max-w-md px-4 pt-6">
